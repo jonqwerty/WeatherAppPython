@@ -17,20 +17,34 @@
   <div class="container">
     
     <div class="row">
-      <div class="col-4 offset-1">
+      <div class="col-5 ">
         <h1>Weather in your city </h1>
-        <form action="">
+        <form action="" method="post">
+          {% csrf_token %}
           <label for="city">City</label>
-          <input type="text" id="city" class="form-control" name="city" placeholder="Enter city">
-          <input tupe="submit" name="send" value="yznat" class="mt-2 btn btn-danger">
+          {{ form.name }}
+          <input type="submit" name="send" value="Finde out" class="mt-2 btn btn-danger">
         </form>
 
       </div>
-      <div class="col-4 offset-1">
+      <div class="col-5 offset-2">
         <h1>Informations</h1>
-        <div class="alert alert-danger">
-          Weather in Moscow
+
+
+        {% for info in all_info  %}
+        <div class="alert alert-info">
+            <div class="row">
+                <div class="col-9"
+                    <b>City:  </b>{{ info.city }}<br>
+                    <b>Temperature:  </b>{{ info.temp }}<sup>o</sup><br>
+                </div>
+                <div class="col-2 offset-1">
+                    <img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Photo" class="img-thumbnail">
+                </div>
+            </div>
         </div>
+        {% endfor %}
+
       </div>
     </div>
   </div>
