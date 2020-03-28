@@ -31,3 +31,8 @@ def index(request):
 	context = {'all_info': all_cities, 'form': form }
 
 	return render(request, 'weather/index.html', context)
+
+
+def info():
+	url = 'https://en.wikipedia.org/wiki/Weather'
+	return render(request, url)
